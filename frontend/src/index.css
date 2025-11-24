@@ -1,0 +1,66 @@
+@import "tailwindcss";
+@import "swiper/css/bundle";
+
+.sponsors-swiper .swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.sponsors-swiper .swiper-pagination-bullet-active {
+  background: white;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+.marquee-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+.marquee-swiper .swiper-slide {
+  width: auto; /* let Swiper handle fractional widths */
+}
+
+.marquee-swiper { pointer-events: none; }
+
+.marquee-edge-left,
+.marquee-edge-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 7rem;
+  pointer-events: none;
+  filter: blur(18px);
+}
+
+.marquee-edge-left {
+  left: 0;
+  background: linear-gradient(to right, rgba(0,0,0,0.9), rgba(0,0,0,0.4), transparent);
+}
+
+.marquee-edge-right {
+  right: 0;
+  background: linear-gradient(to left, rgba(0,0,0,0.9), rgba(0,0,0,0.4), transparent);
+}
+
+
+.cohorts-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+.cohorts-swiper {
+  pointer-events: none;
+}
