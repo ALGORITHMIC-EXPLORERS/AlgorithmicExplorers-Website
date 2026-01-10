@@ -1,0 +1,1 @@
+source env/bin/activate && cd backend && DB_ENGINE=sqlite python manage.py runserver && cd ../frontend npm run dev

@@ -1,0 +1,165 @@
+
+.thumbs-hero {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(145deg, #120030, #25004f 55%, #0b0224);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+
+  &__glow {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.35), transparent 70%);
+    filter: blur(20px);
+    animation: pulseGlow 6s ease-in-out infinite alternate;
+  }
+
+  &__ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    animation: ringSpin 18s linear infinite;
+
+    &.ring--outer {
+      width: 360px;
+      height: 360px;
+    }
+
+    &.ring--inner {
+      width: 260px;
+      height: 260px;
+      animation-duration: 14s;
+      animation-direction: reverse;
+    }
+  }
+
+  &__character {
+    position: relative;
+    width: 180px;
+    height: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+  }
+}
+
+.character__head {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(120deg, #fcd7c7, #f8c1a8);
+  border-radius: 45% 45% 40% 40%;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.character__eye {
+  position: absolute;
+  top: 45%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #2b1b45;
+
+  &.eye--left {
+    left: 30%;
+  }
+
+  &.eye--right {
+    right: 30%;
+  }
+}
+
+.character__smile {
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  width: 40px;
+  height: 16px;
+  border-bottom: 4px solid #e86c87;
+  border-radius: 0 0 40px 40px;
+  transform: translateX(-50%);
+}
+
+.character__body {
+  width: 150px;
+  height: 160px;
+  margin-top: -12px;
+  background: linear-gradient(160deg, #6d2bff, #c92bb8);
+  border-radius: 60% 60% 30% 30%;
+  box-shadow: 0 30px 60px rgba(105, 38, 255, 0.45);
+}
+
+.character__arm {
+  position: absolute;
+  width: 100px;
+  height: 28px;
+  background: linear-gradient(100deg, #fcd7c7, #f8c1a8);
+  border-radius: 14px;
+  top: 55%;
+  transform-origin: left center;
+
+  &.arm--back {
+    left: calc(50% - 60px);
+    transform: rotate(150deg);
+    opacity: 0.6;
+  }
+
+  &.arm--front {
+    left: calc(50% - 10px);
+    animation: thumbsWave 2.3s ease-in-out infinite;
+  }
+}
+
+.character__thumb {
+  position: absolute;
+  right: -12px;
+  top: -10px;
+  width: 26px;
+  height: 46px;
+  border-radius: 12px;
+  background: linear-gradient(160deg, #fcd7c7, #f2b6a0);
+  transform-origin: bottom center;
+  animation: thumbPop 2.3s ease-in-out infinite;
+}
+
+@keyframes ringSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseGlow {
+  from {
+    opacity: 0.25;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 0.45;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes thumbsWave {
+  0%,
+  100% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(-34deg);
+  }
+}
+
+@keyframes thumbPop {
+  0%,
+  100% {
+    transform: rotate(12deg) translateY(0);
+  }
+  50% {
+    transform: rotate(2deg) translateY(-4px);
+  }
+}

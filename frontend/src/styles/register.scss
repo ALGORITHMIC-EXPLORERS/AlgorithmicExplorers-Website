@@ -1,0 +1,54 @@
+.register-shell {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 28px;
+  animation: shellFloat 10s ease-in-out infinite alternate;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background: conic-gradient(from 90deg, #8a2bff, #ff2e63, #4310d9, #0ea5e9, #8a2bff);
+    opacity: 0.25;
+    filter: blur(65px);
+    transform-origin: center;
+    animation: shellSpin 14s linear infinite;
+    z-index: -2;
+  }
+
+  &::after {
+    animation-duration: 22s;
+    animation-direction: reverse;
+    opacity: 0.18;
+  }
+}
+
+.register-shell--panel {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(18px);
+}
+
+.register-shell__glare {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.5), transparent 55%);
+  mix-blend-mode: screen;
+  opacity: 0.35;
+}
+
+@keyframes shellSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shellFloat {
+  from {
+    transform: translateY(-6px);
+  }
+  to {
+    transform: translateY(6px);
+  }
+}

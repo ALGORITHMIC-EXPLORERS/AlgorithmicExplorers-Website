@@ -39,7 +39,7 @@ const cohorts = [
 
 export default function CohortsSection() {
   return (
-    <section className="relative z-20 px-4 sm:px-6 py-12 sm:py-16 md:py-24 text-white">
+    <section className="relative z-20 px-4 sm:px-6 py-12 sm:py-14 md:py-15 text-white">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <FadeInWhenVisible delay={0.2}>
@@ -138,8 +138,8 @@ export default function CohortsSection() {
               spaceBetween={40}
               slidesPerView={1.5}
               centeredSlides={true}
-              loop={true}
-              loopAdditionalSlides={3}
+              loop
+              loopAdditionalSlides={cohorts.length * 2}
               freeMode={{ enabled: true, momentum: false }}
               speed={8000}
               autoplay={{
@@ -163,7 +163,7 @@ export default function CohortsSection() {
                     className="flex items-center justify-center"
                   >
                     <div className="flex flex-col items-center opacity-50">
-                      <div className="w-16 h-16 sm:w-17 sm:h-17 md:w-18 md:h-18 lg:w-19 lg:h-19 rounded-full bg-white/10 backdrop-blur-lg border border-white/20 flex items-center justify-center mb-2 sm:mb-3">
+                      <div className="w-14 h-14 sm:w-15 sm:h-15 md:w-16 md:h-16 lg:w-17 lg:h-17 rounded-full bg-white/10 backdrop-blur-lg border border-white/20 flex items-center justify-center mb-2 sm:mb-3">
                         <Icon className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-white/70" />
                       </div>
                       <p className="text-center text-[10px] sm:text-xs md:text-sm text-white/60 max-w-20 sm:max-w-[100px] md:max-w-[120px] leading-tight">

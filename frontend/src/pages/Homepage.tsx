@@ -73,21 +73,21 @@ const Card = ({
         <img
           src="/badge 1.png"
           alt={title}
-          className="mb-5 rounded-full bg-black h-7"
+          className="mb-2 rounded-full  h-7"
         />
       )}
       {center && (
         <img
           src="/badge 2.png"
           alt={title}
-          className="mb-5 rounded-full bg-white h-7"
+          className="mb-2 rounded-full object-cover h-7"
         />
       )}
       {last && (
         <img
           src="/badge 3.png"
           alt={title}
-          className="mb-5 rounded-full bg-black h-7"
+          className="mb-2 rounded-full h-7"
         />
       )}
 
@@ -110,8 +110,8 @@ const Card = ({
         <button
           className={
             center
-              ? "w-full py-2 rounded-sm bg-linear-to-r from-[#7928FF]  to-[#4C00FF] text-white font-semibold shadow-lg"
-              : "py-2 px-4 rounded-full bg-white/6 text-white/90 mb-2 border border-white/10"
+              ? "w-full py-2 rounded-sm bg-linear-to-r from-[#7928FF]  to-[#4C00FF] hover:-translate-y-1.5 transition-all duration-500 text-white font-semibold shadow-lg"
+              : "py-2 px-4 rounded-full bg-white/6 text-white/90 mb-2 hover:-translate-y-1.5 transition-all duration-500 border border-white/10"
           }
         >
           {cta}
@@ -261,7 +261,7 @@ const HomePage = () => {
                 slidesPerView={2.5}
                 spaceBetween={24}
                 loop
-                loopAdditionalSlides={sponsors.length}
+                loopAdditionalSlides={sponsors.length * 2}
                 freeMode={{ enabled: true }}
                 allowTouchMove={false}
                 speed={8000}
@@ -276,7 +276,7 @@ const HomePage = () => {
                   1024: { slidesPerView: 5.5 },
                 }}
               >
-                {[...sponsors, ...sponsors].map((s, i) => (
+                {[...sponsors, ...sponsors, ...sponsors].map((s, i) => (
                   <SwiperSlide key={i}>
                     <div className="flex items-center justify-center h-22 rounded-xl p-6">
                       <img
@@ -309,7 +309,7 @@ const HomePage = () => {
               <div className="w-full md:w-1/2 h-[40vh] sm:h-[50vh] md:h-[70vh] p-2 sm:p-4 transition-all duration-700 hover:scale-105 rounded-xl bg-white/4">
                 <img
                   src="/guru-preview.png"
-                  className="rounded-xl h-full w-full object-cover shadow-lg"
+                  className="rounded-xl h-full w-full  shadow-lg"
                   alt="Guru Circle Preview"
                 />
               </div>

@@ -72,6 +72,20 @@ const TESTIMONIALS: Testimonial[] = [
     title: "Product Lead",
     image: "testimonials-person.png",
   },
+   {
+    id: "t4",
+    text: "We gained clarity and velocity after adopting this. The team morale improved and deliveries became predictable.",
+    name: "Boniface Emmanuel",
+    title: "Chief Executive Officer (CEO)",
+    image: "testimonials-person.png",
+  },
+   {
+    id: "t5",
+    text: "We gained clarity and velocity after adopting this. The team morale improved and deliveries became predictable.",
+    name: "Christar Cool",
+    title: "CTO",
+    image: "testimonials-person.png",
+  },
 ];
 
 export default function TestimonialSwiper() {
@@ -99,7 +113,7 @@ export default function TestimonialSwiper() {
               autoplay={{
                 delay: 5000,
                 disableOnInteraction: false,
-                pauseOnMouseEnter: true,
+                pauseOnMouseEnter: false,
               }}
               loop
               slidesPerView={1}
@@ -113,15 +127,15 @@ export default function TestimonialSwiper() {
                   <div className="relative">
                     <article
                       className="relative flex flex-col md:flex-row items-start gap-5 md:gap-6
-                                  rounded-3xl bg-gradient-to-br from-[#2c0468] via-[#140037] to-[#050020]
+                                  rounded-3xl linear-to-br from-[#2c0468] via-[#140037] to-[#050020]
                                   p-3 sm:p-5 md:p-6 max-w-4xl mx-auto
                                   shadow-[0_25px_80px_rgba(5,0,20,0.65)] border border-white/10"
                     >
                       {/* Left image column */}
-                      <div className="relative w-full md:w-48 flex-shrink-0">
+                      <div className="relative w-full md:w-48 shrink-0">
                         <div className="relative rounded-2xl overflow-hidden">
                           {/* Purple gradient overlay on image */}
-                          <div className="absolute inset-0 bg-gradient-to-br from-purple-600/60 via-purple-500/40 to-transparent z-10 mix-blend-multiply" />
+                          <div className="absolute inset-0 linear-to-br from-purple-600/60 via-purple-500/40 to-transparent z-10 mix-blend-multiply" />
                           <img
                             src={t.image}
                             alt={t.name}
@@ -160,7 +174,7 @@ export default function TestimonialSwiper() {
                               onClick={() => swiperInstance?.slideNext()}
                               aria-label="Next testimonial"
                               className="relative w-9 h-9 md:w-11 md:h-11 rounded-full flex items-center justify-center
-                                         transition-all duration-300 group/btn flex-shrink-0
+                                         transition-all duration-300 group/btn shrink-0
                                          hover:scale-110 cursor-pointer"
                             >
                               <img src="/next-arrow.png" className="w-3.5 h-3.5 md:w-20 md:h-7 text-white transition-transform group-hover/btn:translate-x-0.5" />

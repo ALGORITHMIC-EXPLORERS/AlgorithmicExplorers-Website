@@ -124,19 +124,19 @@ export default function WhoWeAre() {
             <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8">
               <StatBlock
                 value={24}
-                label="Years\nExperience"
+                label="Years Experience"
                 delay={0.1}
                 format="number"
               />
               <StatBlock
                 value={10000}
-                label="Official\nSubscribers"
+                label="Official Subscribers"
                 delay={0.2}
                 format="abbreviated"
               />
               <StatBlock
                 value={1000000}
-                label="User's\nSatisfaction"
+                label="User's Satisfaction"
                 delay={0.3}
                 format="abbreviated"
               />

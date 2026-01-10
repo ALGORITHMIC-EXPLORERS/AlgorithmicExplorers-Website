@@ -1,0 +1,356 @@
+$n-dim: 4;
+$n: 16;
+$n-faces: 3;
+$c: #101c28 #2d59c8 #10aaff;
+$cL: #1b2e6e;
+$BG: rgb(12, 12, 20);
+
+$rot: rotateX(90deg) rotateY(90deg) ();
+$edge: 2.75em;
+$dist: $edge + 0.75em;
+$t: 7s;
+
+html {
+  font-size: 12px;
+}
+
+#colorWrapper {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: $BG;
+  transition: background-color 0.35s ease-out;
+  z-index: 70;
+
+  .grid {
+    width: (($edge * 4) + (0.5em * 3)) * 0.7 + 0em;
+    height: 6.25em;
+
+    &,
+    * {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-style: preserve-3d;
+    }
+    transform: rotateX(-35deg) rotateY(-45deg);
+  }
+
+  .cube {
+    @for $i from 0 to $n {
+      $j: $i%$n-dim;
+      $k: floor($i/$n-dim);
+      $tx: ($j - 0.5 * ($n-dim - 1)) * $dist;
+      $tz: ($k - 0.5 * ($n-dim - 1)) * $dist;
+
+      &:nth-child(#{$i + 1}) {
+        transform: translate3d($tx, 0, $tz);
+
+        .lifter,
+        .cube__face:nth-child(1) {
+          animation-delay: ($j + ($n-dim - 1 - $k)) * 0.0466 * $t;
+        }
+      }
+    }
+
+    &__face {
+      margin: (-10 * $edge) + 20;
+      width: $edge;
+      height: $edge;
+      transition: background 0.35s ease-out;
+
+      @for $i from 0 to $n-faces {
+        &:nth-child(#{$i + 1}) {
+          transform: nth($rot, $i + 1) translateZ(0.5 * $edge);
+          background: nth($c, $i + 1);
+        }
+
+        &:nth-child(1) {
+          background: nth($c, 1);
+          animation: aniCL ($t / 4) cubic-bezier(0.4, 0.2, 0.4, 0.6) alternate infinite;
+        }
+      }
+    }
+  }
+
+  .lifter {
+    transform-origin: 0 0.5 * $edge;
+    transform: scaleY(0);
+    animation: ani ($t / 4) cubic-bezier(0.5, 0.1, 0.5, 0.9) alternate infinite;
+  }
+
+  @keyframes ani {
+    0% {
+      transform: scaleY(0);
+    }
+    100% {
+      transform: scaleY(0.533);
+    }
+  }
+
+  @keyframes aniCL {
+    0% {
+      background: nth($cL, 1);
+    }
+    100% {
+      background: nth($c, 1);
+    }
+  }
+}
+
+#colorWrapper.gemBlue {
+  $c: #101c28 #2d59c8 #10aaff;
+  $cL: #1b2e6e;
+  $BG: rgb(12, 12, 20);
+
+  background-color: $BG;
+
+  .cube {
+    &__face {
+      @for $i from 0 to $n-faces {
+        &:nth-child(#{$i + 1}) {
+          background: nth($c, $i + 1);
+        }
+
+        &:nth-child(1) {
+          background: nth($c, 1);
+          animation: aniCL-gemBlue ($t / 4) cubic-bezier(0.4, 0.2, 0.4, 0.6) alternate infinite;
+        }
+      }
+    }
+  }
+
+  @keyframes aniCL-gemBlue {
+    0% {
+      background: nth($cL, 1);
+    }
+    100% {
+      background: nth($c, 1);
+    }
+  }
+}
+
+#colorWrapper.phosGreen-II {
+  $c: #101110 #189417 #83f03e;
+  $cL: #053a14;
+  $BG: rgb(8, 12, 8);
+
+  background-color: $BG;
+
+  .cube {
+    &__face {
+      @for $i from 0 to $n-faces {
+        &:nth-child(#{$i + 1}) {
+          background: nth($c, $i + 1);
+        }
+
+        &:nth-child(1) {
+          background: nth($c, 1);
+          animation: aniCL-phosGreen ($t / 4) cubic-bezier(0.4, 0.2, 0.4, 0.6) alternate infinite;
+        }
+      }
+    }
+  }
+
+  @keyframes aniCL-phosGreen {
+    0% {
+      background: nth($cL, 1);
+    }
+    100% {
+      background: nth($c, 1);
+    }
+  }
+}
+
+#colorWrapper.honeyComb {
+  $c: #281e10 #d96907 #ffb910;
+  $cL: #6e2f1b;
+  $BG: rgb(20, 12, 8);
+
+  background-color: $BG;
+
+  .cube {
+    &__face {
+      @for $i from 0 to $n-faces {
+        &:nth-child(#{$i + 1}) {
+          background: nth($c, $i + 1);
+        }
+
+        &:nth-child(1) {
+          background: nth($c, 1);
+          animation: aniCL-honeyComb ($t / 4) cubic-bezier(0.4, 0.2, 0.4, 0.6) alternate infinite;
+        }
+      }
+    }
+  }
+
+  @keyframes aniCL-honeyComb {
+    0% {
+      background: nth($cL, 1);
+    }
+    100% {
+      background: nth($c, 1);
+    }
+  }
+}
+
+#colorWrapper.whtSlate {
+  $c: #121316 #4b555e #ebedef;
+  $cL: #354555;
+  $BG: rgb(12, 12, 14);
+
+  background-color: $BG;
+
+  .cube {
+    &__face {
+      @for $i from 0 to $n-faces {
+        &:nth-child(#{$i + 1}) {
+          background: nth($c, $i + 1);
+        }
+
+        &:nth-child(1) {
+          background: nth($c, 1);
+          animation: aniCL-whtSlate ($t / 4) cubic-bezier(0.4, 0.2, 0.4, 0.6) alternate infinite;
+        }
+      }
+    }
+  }
+
+  @keyframes aniCL-whtSlate {
+    0% {
+      background: nth($cL, 1);
+    }
+    100% {
+      background: nth($c, 1);
+    }
+  }
+}
+
+.buttonCont {
+  position: absolute;
+  bottom: 8vh;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 16px;
+  z-index: 100;
+
+  .inkAnchor {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    &.gemBlue {
+      background: rgba(16, 170, 255, 0.15);
+      border-color: #10aaff;
+    }
+
+    &.phosGreen-II {
+      background: rgba(131, 240, 62, 0.15);
+      border-color: #83f03e;
+    }
+
+    &.honeyComb {
+      background: rgba(255, 185, 16, 0.15);
+      border-color: #ffb910;
+    }
+
+    &.whtSlate {
+      background: rgba(235, 237, 239, 0.15);
+      border-color: #ebedef;
+    }
+
+    .ink-ripple {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      pointer-events: none;
+      animation: ink-ripple-anim 0.6s ease-out;
+    }
+  }
+}
+
+  @keyframes ink-ripple-anim {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2.5);
+    opacity: 0;
+  }
+}
+
+.welcome-text {
+  position: absolute;
+  bottom: 20vh;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+
+  .username-tag {
+    font-size: 2rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #10aaff, #2d59c8, #8a2bff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    animation: welcome-fade-in 1.5s ease-out;
+    letter-spacing: 0.05em;
+  }
+
+  .explorer-greeting {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    animation: welcome-fade-in 1.5s ease-out 0.3s both;
+    letter-spacing: 0.15em;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #10aaff, #2d59c8, #8a2bff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    animation: welcome-fade-in 1.5s ease-out;
+    letter-spacing: 0.05em;
+  }
+}
+
+@keyframes welcome-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,14 +1,18 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { useAuth } from "../context/AuthContext";
+import { Link } from "react-router-dom";
 
 // Reference screenshot (for assets or visual comparison)
 // Screenshot path provided in this conversation:
 // "/mnt/data/Screenshot from 2025-11-24 00-28-11.png"
 
 export default function Footer() {
+  const { user, logout } = useAuth();
+
   return (
-    <footer className="w-full mt-20 bg-gradient-to-br from-[#050020] via-[#0a0230] to-[#1c0054] text-[#dcd2e8]">
-      <div className="max-w-6xl mx-auto px-6 py-14">
+    <footer className="bg-gradient-to-br from-[#050020] via-[#0a0230] to-[#1c0054] text-white">
+      <div className="max-w-6xl mx-auto px-6 py-14 space-y-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
           {/* Left column: Brand + description */}
           <div className="md:col-span-4">
@@ -45,20 +49,35 @@ export default function Footer() {
 
           {/* Right column: buttons */}
           <div className="md:col-span-3 flex flex-col items-end gap-4">
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              className="px-5 py-2 rounded-full bg-transparent border border-[#361b40] text-[#b9acc9] text-sm"
-            >
-              Sing Up
-            </motion.button>
-
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              className="px-5 py-2 rounded-full bg-gradient-to-r from-[#c43bff] to-[#7b00ff] text-white text-sm flex items-center gap-2"
-            >
-              <span>Log In</span>
-              <ArrowRight size={14} />
-            </motion.button>
+            {user ? (
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                className="px-5 py-2 rounded-full bg-white/10 border border-white/20 text-white/90 text-sm flex items-center gap-2"
+                onClick={logout}
+              >
+                Logout
+              </motion.button>
+            ) : (
+              <>
+              <Link to={"/register"}>
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  className="px-5 py-2 rounded-full bg-transparent border border-[#361b40] text-[#b9acc9] text-sm"
+                >
+                  Sign Up
+                </motion.button>
+                </Link>
+                <Link to={'/login'}>
+                <motion.button
+                  whileHover={{ scale: 1.03 }}
+                  className="px-5 py-2 rounded-full bg-gradient-to-r from-[#c43bff] to-[#7b00ff] text-white text-sm flex items-center gap-2"
+                >
+                  <span>Log In</span>
+                  <ArrowRight size={14} />
+                </motion.button>
+                </Link>
+              </>
+            )}
           </div>
         </div>
 
@@ -69,7 +88,7 @@ export default function Footer() {
         <div className="flex items-center justify-center text-sm text-[#8a7a9e]">
           <div className="text-center text-xs text-[#6f5f80]">©ae. all right reserve</div>
         </div>
-        </div>
+      </div>
     </footer>
   );
 }

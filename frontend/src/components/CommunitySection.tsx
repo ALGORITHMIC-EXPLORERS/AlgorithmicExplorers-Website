@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const VECTOR = "Vector.png";
 const GHANA = "ghana 1.png";
@@ -44,14 +45,14 @@ export default function CommunitySection(){
 
           {/* Search Bar */}
           <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-full max-w-xl px-6">
-            <div className="flex bg-gradient-to-r from-[#0e002b] to-[#220044] border border-[#3c1f7e] p-1 rounded-full backdrop-blur-xl shadow-[0_0_20px_#7b4bff50]">
+            <div className="flex bg-linear-to-r from-[#0e002b] to-[#220044] border border-[#3c1f7e] p-1 rounded-full backdrop-blur-xl shadow-[0_0_20px_#7b4bff50]">
               <input
                 placeholder="Search Location..."
                 className="flex-1 bg-transparent px-4 py-3 outline-none text-sm placeholder-gray-400"
               />
               <motion.button
                 whileHover={{ scale: 1.05 }}
-                className="px-6 py-2 bg-gradient-to-r from-[#7b4bff] to-[#612bff] rounded-full text-white font-medium shadow-lg"
+                className="px-6 py-2 bg-linear-to-r from-[#7b4bff] to-[#612bff] rounded-full text-white font-medium shadow-lg"
               >
                 Join Community
               </motion.button>
@@ -67,12 +68,13 @@ export default function CommunitySection(){
         <p className="text-gray-300 mt-2">Stay updated with the latest news, tips, and updates.</p>
 
         <div className="flex justify-center gap-4 mt-6">
+          <Link to={"/register"}>
           <motion.button
             whileHover={{ scale: 1.05 }}
-            className="px-8 py-2 bg-gradient-to-r from-[#7b4bff] to-[#5f2bff] rounded-full shadow-xl"
+            className="px-8 py-2 bg-linear-to-r from-[#7b4bff] to-[#5f2bff] rounded-full shadow-xl"
           >
             Get Started
-          </motion.button>
+          </motion.button></Link>
 
           <motion.button
             whileHover={{ scale: 1.05 }}
